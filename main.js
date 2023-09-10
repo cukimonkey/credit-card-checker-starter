@@ -27,8 +27,35 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 
+const validateCred = (array) => {
+    const digitsCopy = array.slice();
+    digitsCopy.reverse();
+
+    // Initialize a variable to keep track of the sum
+  let sum = 0;
+
+  for (let i = 0; i < digitsCopy.length; i++) {
+    let currentDigit = digitsCopy[i];
+
+    // Double every second digit (starting from the right)
+    if (i % 2 === 1) {
+        currentDigit *= 2;
+      
+     // If doubling results in a number greater than 9, subtract 9
+      if (currentDigit > 9) {
+        currentDigit -= 9;
+      }
+    }
+    // Add the current digit to the sum
+    sum += currentDigit;
+}
+// If the sum is divisible by 10, the card number is valid
+return sum % 10 === 0;
+}
 
 
+
+console.log(validateCred(valid1));
 
 
 
