@@ -58,4 +58,69 @@ return sum % 10 === 0;
 console.log(validateCred(valid1));
 
 
+//console.log(validateCred(invalid2));
 
+//Find invalid cards
+
+const findInvalidCards = (batchArray) => {
+
+    let invalidCards = [];
+    for ( let i = 0; i < batchArray.length; i++){
+      
+      if (!validateCred(batchArray[i])){
+        invalidCards.push(batchArray[i])
+        
+      }
+    }
+    //console.log(invalidCards);
+    return invalidCards;
+    }
+    
+    //findInvalidCards(batch);
+    
+    const idInvalidCardCompanies = (invalidCardsArray) => {
+    let companies = [];
+    let noDuplicate = [];
+    let finalList = [];
+      for (let i = 0; i < invalidCardsArray.length; i++) {
+        
+        companies.push(invalidCardsArray[i][0]);
+      }
+    console.log(companies)
+    //Remove duplicates
+        for (let j = 0; j < companies.length; j++) {
+          if (noDuplicate.indexOf(companies[j]) === -1) {
+            noDuplicate.push(companies[j]);
+          }
+        }
+      console.log(noDuplicate)
+    
+    //Create final list with Bank names
+     for (let e = 0; e < noDuplicate.length; e++ ){
+      switch (noDuplicate[e]) {
+          case 3:
+            finalList.push("Amex (American Express)");
+            break;
+    
+          case 4:
+            finalList.push("Visa");
+            break;
+    
+          case 5:
+            finalList.push("Mastercard");
+            break;
+    
+          case 6:
+            finalList.push("Discover");
+            break;
+    
+          default:
+            companies.push("Company not found");
+            break;
+        }
+     }
+     console.log(finalList)
+    }
+    
+
+    
